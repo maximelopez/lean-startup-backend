@@ -51,3 +51,37 @@ export const getProfile = async (userId) => {
     } 
   };
 }
+
+// Mettre à jour le profil
+export const updateProfile = async (userId, updateData) => {
+  // Si le mot de passe est mis à jour, le hasher
+  if (updateData.password) {
+    updateData.password = await bcrypt.hash(updateData.password, 10);
+  }
+
+  const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    { $set: updateData },
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedUser) {
+    throw new Error('Utilisateur non trouvé.');
+  }
+
+  return {
+    id: updatedUser._id,
+    name: updatedUser.name,
+    email: updatedUser.email,
+    isPremium: updatedUser.isPremium
+  };
+};
+
+// Supprimer le profil
+export const deleteProfile = async (userId) => {
+  const deletedUser = await User.findByIdAndDelete(userId);
+  if (!deletedUser) {
+    throw new Error('Utilisateur non trouvé.');
+  }
+  return;
+};

@@ -29,7 +29,7 @@ export const loginUser = async (email, password) => {
 // Création de l'utilisateur + connexion automatique
 export const createUser = async (data) => {
     const existingUser = await User.findOne({ email: data.email });
-    if (existingUser) throw new Error('Cet email est déjà utilisé');
+    if (existingUser) throw new Error('Cet email est déjà utilisé.');
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
 

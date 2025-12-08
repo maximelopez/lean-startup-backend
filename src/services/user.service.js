@@ -39,3 +39,15 @@ export const createUser = async (data) => {
 
     return await loginUser(data.email, data.password);
 };
+
+export const getProfile = async (userId) => {
+  const user = await User.findById(userId);
+  return { 
+    profile: {
+      id: user._id, 
+      name: user.name, 
+      email: user.email, 
+      isPremium: user.isPremium
+    } 
+  };
+}

@@ -21,3 +21,13 @@ export const createUser = async (req, res) => {
         res.status(400).json({ message: 'Impossible de créer l’utilisateur.', error: error.message });
     }
 };
+
+export const getProfile = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const profile = await userService.getProfile(userId);
+        res.status(200).json(profile);
+    } catch (error) {
+        res.status(400).json({ message: 'Impossible de récupérer le profil.', error: error.message });
+    }
+};

@@ -18,6 +18,6 @@ const familySchema = mongoose.Schema({
         type: String,
         required: [true, 'Le numéro de téléphone est obligatoire']
     },
-}, { timestamps: true })
+}, { timestamps: true });
 
 export const Family = mongoose.model('Family', familySchema);

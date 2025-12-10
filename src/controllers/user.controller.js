@@ -44,7 +44,6 @@ export const updateProfile = async (req, res) => {
 
         const updatedUser = await userService.updateProfile(userId, updateData);
         res.status(200).json(updatedUser);
-        res
     } catch (error) {
         res.status(400).json({ message: 'Impossible de mettre à jour le profil.', error: error.message });
     }

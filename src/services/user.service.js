@@ -65,9 +65,7 @@ export const updateProfile = async (userId, updateData) => {
     { new: true, runValidators: true }
   );
 
-  if (!updatedUser) {
-    throw new Error('Utilisateur non trouvé.');
-  }
+  if (!updatedUser) throw new Error('Utilisateur non trouvé.');
 
   return {
     id: updatedUser._id,

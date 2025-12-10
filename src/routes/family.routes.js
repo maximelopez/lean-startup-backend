@@ -1,11 +1,10 @@
 import { Router } from 'express';
-import { createFamily, getAllFamilies, getFamilyById, updateFamily, deleteFamily } from '../controllers/family.controller.js';
+import { createFamily, getFamily, updateFamily, deleteFamily } from '../controllers/family.controller.js';
 
 const router = Router();
 
 router.post('/', createFamily);
-router.get('/', getAllFamilies);
-router.get('/:id', getFamilyById);
+router.get('/:id', getFamily);
 router.put('/:id', updateFamily);
 router.delete('/:id', deleteFamily);
 

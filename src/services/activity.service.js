@@ -22,8 +22,5 @@ export const updateActivity = async (activityId, updateData) => {
 };
 
 export const deleteActivity = async (activityId) => {
-    const deletedActivity = await Activity.findByIdAndDelete(activityId);
-    if (!deletedActivity) {
-        throw new Error('Activité non trouvé.');
-    }
+    return await Activity.findByIdAndDelete(activityId);
 };

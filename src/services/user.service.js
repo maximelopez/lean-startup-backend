@@ -47,7 +47,8 @@ export const getProfile = async (userId) => {
       id: user._id, 
       name: user.name, 
       email: user.email, 
-      score: user.score
+      score: user.score,
+      hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
     } 
   };
 }
@@ -71,7 +72,8 @@ export const updateProfile = async (userId, updateData) => {
     id: updatedUser._id,
     name: updatedUser.name,
     email: updatedUser.email,
-    score: updatedUser.score
+    score: updatedUser.score,
+    hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
   };
 };
 
@@ -79,7 +81,7 @@ export const updateProfile = async (userId, updateData) => {
 export const updateScore = async (userId, score) => {
   const updatedUser = await User.findByIdAndUpdate(
     userId,
-    { score },
+    { score, hasCompletedQuestionnaire: true },
     { new: true, runValidators: true }
   );
 
@@ -92,6 +94,7 @@ export const updateScore = async (userId, score) => {
     name: updatedUser.name,
     email: updatedUser.email,
     score: updatedUser.score,
+    hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
   };
 };
 

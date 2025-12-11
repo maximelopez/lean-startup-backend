@@ -17,14 +17,7 @@ const familySchema = mongoose.Schema({
     phone: {
         type: String,
         required: [true, 'Le numéro de téléphone est obligatoire']
-    },
-     members: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-            required: false
-        }
-    ]
+    }
 }, { timestamps: true });
 
 export const Family = mongoose.model('Family', familySchema);

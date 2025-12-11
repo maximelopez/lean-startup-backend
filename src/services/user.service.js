@@ -103,7 +103,7 @@ export const updateScore = async (userId, score) => {
     name: updatedUser.name,
     email: updatedUser.email,
     score: updatedUser.score,
-    hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
+    hasCompletedQuestionnaire: updatedUser.hasCompletedQuestionnaire
   };
 };
 

@@ -27,7 +27,11 @@ const userSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    familyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Family' }
+    familyId: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Family',
+        default: null
+    }
 }, { timestamps: true });
 
 export const User = mongoose.model('User', userSchema);

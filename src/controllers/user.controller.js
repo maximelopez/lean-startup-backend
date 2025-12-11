@@ -49,6 +49,24 @@ export const updateProfile = async (req, res) => {
     }
 };
 
+// Mettre à jour le score
+export const updateScore = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { score } = req.body;
+
+    // Vérification simple
+    if (typeof score !== 'number') {
+      return res.status(400).json({ message: 'Le score doit être un nombre.' });
+    }
+
+    const updatedUser = await userService.updateScore(userId, score);
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: 'Impossible de mettre à jour le score.', error: error.message });
+  }
+};
+
 // Supprimer le profil
 export const deleteProfile = async (req, res) => {
     try {

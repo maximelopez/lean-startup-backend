@@ -75,6 +75,26 @@ export const updateProfile = async (userId, updateData) => {
   };
 };
 
+// Mettre à jour uniquement le score
+export const updateScore = async (userId, score) => {
+  const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    { score },
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedUser) {
+    throw new Error('Utilisateur non trouvé.');
+  }
+
+  return {
+    id: updatedUser._id,
+    name: updatedUser.name,
+    email: updatedUser.email,
+    score: updatedUser.score,
+  };
+};
+
 // Supprimer le profil
 export const deleteProfile = async (userId) => {
   const deletedUser = await User.findByIdAndDelete(userId);

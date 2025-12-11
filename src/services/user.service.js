@@ -23,7 +23,16 @@ export const loginUser = async (email, password) => {
 
   const token = generateToken(user);
 
-  return { user: { id: user._id, name: user.name, email: user.email, score: user.score }, token };
+  return { 
+    user: { 
+      id: user._id, 
+      name: user.name, 
+      email: user.email, 
+      score: user.score,
+      hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
+    }, 
+    token 
+  };
 };
 
 // Création de l'utilisateur + connexion automatique

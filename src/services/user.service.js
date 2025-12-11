@@ -29,7 +29,8 @@ export const loginUser = async (email, password) => {
       name: user.name, 
       email: user.email, 
       score: user.score,
-      hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
+      hasCompletedQuestionnaire: user.hasCompletedQuestionnaire,
+      familyId: user.familyId
     }, 
     token 
   };
@@ -57,7 +58,8 @@ export const getProfile = async (userId) => {
       name: user.name, 
       email: user.email, 
       score: user.score,
-      hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
+      hasCompletedQuestionnaire: user.hasCompletedQuestionnaire,
+      familyId: user.familyId
     } 
   };
 }
@@ -82,7 +84,8 @@ export const updateProfile = async (userId, updateData) => {
     name: updatedUser.name,
     email: updatedUser.email,
     score: updatedUser.score,
-    hasCompletedQuestionnaire: user.hasCompletedQuestionnaire
+    hasCompletedQuestionnaire: updatedUser.hasCompletedQuestionnaire,
+    familyId: updatedUser.familyId
   };
 };
 
@@ -103,7 +106,8 @@ export const updateScore = async (userId, score) => {
     name: updatedUser.name,
     email: updatedUser.email,
     score: updatedUser.score,
-    hasCompletedQuestionnaire: updatedUser.hasCompletedQuestionnaire
+    hasCompletedQuestionnaire: updatedUser.hasCompletedQuestionnaire,
+    familyId: updatedUser.familyId
   };
 };
 

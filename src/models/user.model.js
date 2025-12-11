@@ -26,7 +26,8 @@ const userSchema = mongoose.Schema({
     hasCompletedQuestionnaire: {
         type: Boolean,
         default: false,
-    }
+    },
+    familyId: { type: mongoose.Schema.Types.ObjectId, ref: 'Family' }
 }, { timestamps: true });
 
 export const User = mongoose.model('User', userSchema);

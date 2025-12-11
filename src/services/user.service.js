@@ -23,7 +23,7 @@ export const loginUser = async (email, password) => {
 
   const token = generateToken(user);
 
-  return { user: { id: user._id, name: user.name, email: user.email, isPremium: user.isPremium }, token };
+  return { user: { id: user._id, name: user.name, email: user.email, score: user.score }, token };
 };
 
 // Création de l'utilisateur + connexion automatique
@@ -47,7 +47,7 @@ export const getProfile = async (userId) => {
       id: user._id, 
       name: user.name, 
       email: user.email, 
-      isPremium: user.isPremium
+      score: user.score
     } 
   };
 }
@@ -71,7 +71,7 @@ export const updateProfile = async (userId, updateData) => {
     id: updatedUser._id,
     name: updatedUser.name,
     email: updatedUser.email,
-    isPremium: updatedUser.isPremium
+    score: updatedUser.score
   };
 };
 

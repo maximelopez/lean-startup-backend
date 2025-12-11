@@ -17,9 +17,11 @@ const userSchema = mongoose.Schema({
         required: [true, 'Le mot de passe est obligatoire'],
         minlength: [6, 'Le mot de passe doit contenir au moins 6 caractères']
     },
-    isPremium: {
-        type: Boolean,
-        default: false
+    score: {
+        type: Number,
+        default: 50,
+        min: 0,
+        max: 100,
     }
 }, { timestamps: true });
 

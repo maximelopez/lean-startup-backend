@@ -78,3 +78,23 @@ export const deleteProfile = async (req, res) => {
         res.status(400).json({ message: 'Impossible de supprimer le profil.', error: error.message });
     }
 };
+
+export const addUserToFamily = async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { familyId } = req.body;
+
+        if (!familyId) {
+            return res.status(400).json({ message: 'familyId est requis.' });
+        }
+
+        const updatedUser = await userService.addUserToFamily(userId, familyId);
+
+        res.status(200).json(updatedUser);
+    } catch (error) {
+        res.status(400).json({ 
+            message: 'Impossible d’ajouter la famille à l’utilisateur.',
+            error: error.message 
+        });
+    }
+};

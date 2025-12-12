@@ -119,3 +119,25 @@ export const deleteProfile = async (userId) => {
   }
   return;
 };
+
+
+export const addUserToFamily = async (userId, familyId) => {
+  const updatedUser = await User.findByIdAndUpdate(
+    userId,
+    { familyId },
+    { new: true, runValidators: true }
+  );
+
+  if (!updatedUser) {
+    throw new Error('Utilisateur non trouvé.');
+  }
+
+  return {
+    id: updatedUser._id,
+    name: updatedUser.name,
+    email: updatedUser.email,
+    score: updatedUser.score,
+    hasCompletedQuestionnaire: updatedUser.hasCompletedQuestionnaire,
+    familyId: updatedUser.familyId
+  };
+};

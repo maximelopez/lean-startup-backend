@@ -8,15 +8,15 @@ const router = Router();
 router.post('/login', loginUser);
 router.post('/signup', createUser);
 
-// Profil
-router.get('/profile/:id', authMiddleware, getProfile);
-router.put('/profile/:id', authMiddleware, updateProfile);
-router.delete('/profile/:id', authMiddleware, deleteProfile);
+// User
+router.get('/:id', authMiddleware, getProfile);
+router.put('/:id', authMiddleware, updateProfile);
+router.delete('/:id', authMiddleware, deleteProfile);
 
 // Score
-router.put('/:id/score', updateScore);
+router.put('/:id/score', authMiddleware, updateScore);
 
 // Famille
-router.put('/:id/family', addUserToFamily);
+router.put('/:id/family', authMiddleware, addUserToFamily);
 
 export default router;

@@ -14,7 +14,7 @@ router.put('/:id', authMiddleware, updateProfile);
 router.delete('/:id', authMiddleware, deleteProfile);
 
 // Score
-router.put('/:id/score', authMiddleware, updateScore);
+router.put('/:id/score', updateScore);
 
 // Famille
 router.put('/:id/family', authMiddleware, addUserToFamily);
